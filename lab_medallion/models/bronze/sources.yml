@@ -1,0 +1,12 @@
+sources:
+  - name: bronze
+    description: Raw datasets downloaded from the S3 bucket.
+    tables:
+      - name: users
+        description: One row per user.
+        meta:
+          external_location: "read_csv('data/bronze/users.csv', strict_mode = false)"
+      - name: orders
+        description: One row per order.
+        meta:
+          external_location: "read_csv('data/bronze/orders.csv', strict_mode = false)"
