@@ -9,8 +9,8 @@ users_typed = (
         F.col("birthdate").cast("date").alias("birthdate"),
         F.split(F.col("address"), "\n").alias("address_lines"),
     )
-    .withColumn("street", F.element_at("address_lines", 1))
-    .withColumn("address_line_2", F.element_at("address_lines", 2))
+    .withColumn("street", F.try_element_at("address_lines", F.lit(1)))
+    .withColumn("address_line_2", F.try_element_at("address_lines", F.lit(2)))
     .drop("address_lines")
 )
 
